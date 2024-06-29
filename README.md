@@ -26,3 +26,5 @@ create table if not exists tasks (
     created_by varchar(100)
 );
 ```
+### How to run
+Execute the Root.py file.
