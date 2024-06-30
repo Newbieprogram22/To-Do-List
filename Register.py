@@ -75,7 +75,7 @@ class RegisterManager(ct.CTkFrame):
             if password == confirm_password:
 
                 # storing values in the database
-                register_query = f"INSERT INTO {table_name} (user_name, user_email, user_contact, sec_ques, sec_ans, user_pwd, user_conf_pwd) VALUES {(self.firstname_entry.get() + " " + self.lastname_entry.get()), self.email_entry.get(), self.contact_entry.get(), self.secQues_entry.get(), self.secAns_entry.get(), self.pwd_entry.get(), self.confirm_pwd_entry.get()}"
+                register_query = f"INSERT INTO {table_name} (user_name, user_email, user_contact, user_pwd, user_conf_pwd) VALUES {(self.firstname_entry.get() + " " + self.lastname_entry.get()), self.email_entry.get(), self.contact_entry.get(), self.pwd_entry.get(), self.confirm_pwd_entry.get()}"
                 # select_query = f"SELECT * FROM {table_name} WHERE user_name = '{username}'"
                 cursor.execute(register_query)
                 conn.commit()
