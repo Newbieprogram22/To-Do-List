@@ -58,7 +58,7 @@ class TaskManager(ct.CTkFrame):
 
         # Function to view all tasks from the database
         def view_tasks():
-            cursor.execute(f"SELECT * FROM {task_table_name} ")
+            cursor.execute(f"SELECT * FROM {task_table_name} WHERE created_by = '{TaskManager.user}'")
             tasks = cursor.fetchall()
             list_tasks.delete(0, "end")
             for task in tasks:
