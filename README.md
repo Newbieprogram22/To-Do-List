@@ -10,8 +10,6 @@ create table if not exists user_table(
     user_name varchar(50),
     user_email varchar(100),
     user_contact varchar(20),
-    sec_ques varchar(120),
-    sec_ans varchar(120),
     user_pwd varchar(25),
     user_conf_pwd varchar(25)
 );
