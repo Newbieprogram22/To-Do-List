@@ -61,15 +61,18 @@ class TaskManager(ct.CTkFrame):
             cursor.execute(f"SELECT * FROM {task_table_name} WHERE created_by = '{TaskManager.user}'")
             tasks = cursor.fetchall()
             list_tasks.delete(0, "end")
-            for task in tasks:
-                completed_status = "Yes" if task[3] else "No"
-                list_tasks.insert("end", f"Task ID: {task[0]}, Task Name: {task[1]}, Description: {task[2]}, Completed: {completed_status}")
-
+            if (tasks):
+                for task in tasks:
+                    completed_status = "Yes" if task[3] else "No"
+                    list_tasks.insert("end", f"Task ID: {task[0]}, Task Name: {task[1]}, Description: {task[2]}, Completed: {completed_status}")
+            else:
+                tk.messagebox.showerror("Error", "No tasks found!")
+                
         # Function to view all tasks from database
         def mark_completed():
             try:
                 task_id = int(entry_task_id.get())
-                cursor.execute(f"UPDATE {task_table_name} SET task_status = 1 WHERE task_id = {task_id} ")
+                cursor.execute(f"UPDATE {task_table_name} SET task_status = 1 WHERE task_id = {task_id} AND created_by = '{TaskManager.user}'")
                 conn.commit()
                 tk.messagebox.showinfo("Success", "Task marked as completed!")
                 entry_task_id.delete(0, "end")
@@ -88,7 +91,7 @@ class TaskManager(ct.CTkFrame):
                     tk.messagebox.showerror("Error", "Task name cannot be empty!")
                     return
                 
-                cursor.execute(f"UPDATE {task_table_name} SET task_name = '{task_name}', task_description = '{description}' WHERE task_id = '{task_id}'")
+                cursor.execute(f"UPDATE {task_table_name} SET task_name = '{task_name}', task_description = '{description}' WHERE task_id = '{task_id}' AND created_by = '{TaskManager.user}'")
                 conn.commit()
                 tk.messagebox.showinfo("Success", "Task details updated successfully!")
                 entry_task_id.delete(0, "end")
@@ -101,7 +104,7 @@ class TaskManager(ct.CTkFrame):
         def delete_task():
             try:
                 task_id = int(entry_task_id.get())
-                cursor.execute(f"DELETE FROM {task_table_name} WHERE task_id = '{task_id}'")
+                cursor.execute(f"DELETE FROM {task_table_name} WHERE task_id = '{task_id}' AND created_by = '{TaskManager.user}'")
                 conn.commit()
                 tk.messagebox.showinfo("Success", "Task deleted successfully!")
                 entry_task_id.delete(0, "end")
