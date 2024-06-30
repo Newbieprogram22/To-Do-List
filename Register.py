@@ -48,17 +48,19 @@ class RegisterManager(ct.CTkFrame):
         self.contact_entry = ct.CTkEntry(self, placeholder_text="Contact", width=360)
         self.contact_entry.grid(row=3, column=0, columnspan=3, padx=40, pady=10)
 
-        self.secQues_entry = ct.CTkEntry(self, placeholder_text="Security Question", width=360)
-        self.secQues_entry.grid(row=4, column=0, columnspan=3, padx=40, pady=10)
+        # self.secQues_entry = ct.CTkEntry(self, placeholder_text="Security Question", width=360)
+        # self.secQues_entry.grid(row=4, column=0, columnspan=3, padx=40, pady=10)
 
-        self.secAns_entry = ct.CTkEntry(self, placeholder_text="Answer", width=360)
-        self.secAns_entry.grid(row=5, column=0, columnspan=3, padx=40, pady=10)
+        # self.secAns_entry = ct.CTkEntry(self, placeholder_text="Answer", width=360)
+        # self.secAns_entry.grid(row=5, column=0, columnspan=3, padx=40, pady=10)
 
         self.pwd_entry = ct.CTkEntry(self, placeholder_text="Password", show='*')
-        self.pwd_entry.grid(row=6, column=0, padx=40, pady=10)
+        # self.pwd_entry.grid(row=6, column=0, padx=40, pady=10)
+        self.pwd_entry.grid(row=4, column=0, padx=40, pady=10)
 
         self.confirm_pwd_entry = ct.CTkEntry(self, placeholder_text="Confirm Password", show='*')
-        self.confirm_pwd_entry.grid(row=6, column=1, padx=40, pady=10)
+        # self.confirm_pwd_entry.grid(row=6, column=1, padx=40, pady=10)
+        self.confirm_pwd_entry.grid(row=4, column=1, padx=40, pady=10)
 
         # Button functions
 
@@ -91,16 +93,19 @@ class RegisterManager(ct.CTkFrame):
 
         def register_func():  # register verify
             mand_detail = (self.firstname_entry.get() != "") and (self.email_entry.get() != "") and (self.contact_entry.get() != "")
-            mand_security = (self.secQues_entry.get() != "") and (self.secAns_entry.get() != "")
+            # mand_security = (self.secQues_entry.get() != "") and (self.secAns_entry.get() != "")
             mand_pwd = (self.pwd_entry.get() != "") and (self.confirm_pwd_entry.get() != "")
-            result = mand_detail and mand_security and mand_pwd
+            # result = mand_detail and mand_security and mand_pwd
+            result = mand_detail and mand_pwd
             if (result):
                 register_user()
             else:
                 tkinter.messagebox.showerror("Error", "Please fill all the fields")
 
         self.register_btn = ct.CTkButton(self, text="Register", command=register_func)
-        self.register_btn.grid(row=7, column=0, padx=40, pady=20)
+        # self.register_btn.grid(row=7, column=0, padx=40, pady=20)
+        self.register_btn.grid(row=5, column=0, padx=40, pady=20)
 
         self.cancel_btn = ct.CTkButton(self, text="Cancel", command=cancel)
-        self.cancel_btn.grid(row=7, column=1, padx=40, pady=20)
+        # self.cancel_btn.grid(row=7, column=1, padx=40, pady=20)
+        self.cancel_btn.grid(row=5, column=1, padx=40, pady=20)
