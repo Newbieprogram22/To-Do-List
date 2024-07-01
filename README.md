@@ -17,19 +17,19 @@ MySql
 
 Clone the repository:
 
-git clone https://github.com/Newbieprogram22/To-Do-List
+```git clone https://github.com/Newbieprogram22/To-Do-List```
 
 Navigate to the project directory:
 
-cd todo-list
+```cd todo-list```
 
 ## Usage
 
 Run the application:
 
-python Root.py
+```python Root.py```
 
-The GUI window will open. You can start adding tasks after registration(if you are a new user) and login.
+The GUI window will open. You can start adding tasks after registration (if you are a new user) and login.
 
 ## Database
 
